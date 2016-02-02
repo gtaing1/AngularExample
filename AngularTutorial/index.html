@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="store">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+</head>
+<body ng-controller="StoreController as store">
+    <div class="list-group">
+        <div ng-repeat="product in store.products">
+            <div class="list-group-item" ng-hide="product.soldOut" ng-init="tab = 1">
+                <section>
+                    <ul class="nav nav-pills">
+                        <li ng-class="{active:tab === 1}"><a href ng-click="tab = 1">Description</a></li>
+                        <li ng-class="{active:tab === 2}"><a href ng-click="tab = 2">Specifications</a></li>
+                        <li ng-class="{active:tab === 3}"><a href ng-click="tab = 3">Reviews</a></li>
+                    </ul>
+                    {{tab}}
+                </section>
+                <h1>{{product.name | uppercase }}</h1>
+                <h2>{{product.price | currency}}</h2>
+                <img ng-src="{{product.images[0].full}}" />
+                <div class="panel" ng-show="tab === 1">
+                    <h4>Description</h4>
+                    <p>{{product.description}}</p>
+                </div>
+                <div class="panel" ng-show="tab === 2">
+                    <h4>Specifications</h4>
+                    <blockquote>Nothing here.... yet!</blockquote>
+                </div>
+                <div class="panel" ng-show="tab === 3">
+                    <h4>Reviews</h4>
+                    <blockquote>Nothing here.... yet!</blockquote>
+                </div>
+                <button ng-show="product.canPurcase">Add to cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
