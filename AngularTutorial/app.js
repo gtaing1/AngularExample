@@ -1,9 +1,9 @@
 ﻿(function () {
-    var app = angular.module('store', []);
+    var app = angular.module('store', ['store-products']);
 
-    app.controller('StoreController', function () {
+    app.controller('StoreController', ['$http', function ($http) {
         this.products = gems;
-    });
+    }]);
 
     app.controller('ReviewController', function () {
         this.review = {};
@@ -12,34 +12,6 @@
             product.reviews.push(this.review);
             this.review = {};
         };
-    });
-
-    // <div product-title></div>
-    app.directive('productTitle', function () {
-        return {
-            restrict: 'A',
-            templateUrl: 'product-title.html'
-        }
-    });
-
-    // <product-panels></product-panels>
-    app.directive('productPanels', function () {
-        return {
-            restrict: 'E',
-            templateUrl: 'product-panels.html',
-            controller: function () {
-                this.tab = 1;
-
-                this.selectTab = function (setTab) {
-                    this.tab = setTab;
-                };
-
-                this.isSelected = function (checkTab) {
-                    return this.tab === checkTab;
-                };
-            },
-            controllerAs: 'panel'
-        }
     });
 
     var gems = [{
@@ -117,4 +89,6 @@
             }
         ]
     }];
+
+    console.log(JSON.stringify(gems));
 })();

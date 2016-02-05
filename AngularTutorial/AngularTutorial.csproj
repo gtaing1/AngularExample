@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="main.css" />
     <Content Include="packages.config" />
+    <Content Include="products.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -82,6 +83,7 @@
     <Content Include="index.html" />
     <Content Include="product-panels.html" />
     <Content Include="product-title.html" />
+    <Content Include="product.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
